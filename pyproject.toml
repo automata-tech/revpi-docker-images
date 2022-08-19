@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 130
+
+[tool.mypy]
+mypy_path = "$MYPY_CONFIG_FILE_DIR"
+files = "."
+namespace_packages = true
+explicit_package_bases = true
+warn_unreachable = true
+strict = true
+
+[tool.isort]
+profile = "black"
