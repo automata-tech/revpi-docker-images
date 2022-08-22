@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e08cf7cf84b0f6b5bda6110fcf9d81237fa423ab5b859c32e549449a183e65a8"
+            "sha256": "526582951476caf12884d1b8210757be6432228d1389ad22f74deaf22ca8c0aa"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -13,7 +13,16 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "tqdm": {
+            "hashes": [
+                "sha256:40be55d30e200777a307a7585aee69e4eabb46b4ec6a4b4a5f2d9f11e7d5408d",
+                "sha256:74a2cdefe14d11442cedf3ba4e21a3b84ff9a2dbdc6cfae2c34addb2a14a5ea6"
+            ],
+            "index": "pypi",
+            "version": "==4.64.0"
+        }
+    },
     "develop": {
         "black": {
             "hashes": [
@@ -157,6 +166,14 @@
             ],
             "markers": "python_version < '3.11'",
             "version": "==2.0.1"
+        },
+        "tqdm-stubs": {
+            "hashes": [
+                "sha256:af7044737de561b2816b8b3fae1cb8af024ad0337311b9fc22d121cd3ab5c8e5",
+                "sha256:cb794e89042aac254a77a4322a16f18dfd1d0d2ebe5b39cc4d3e6513fed00251"
+            ],
+            "index": "pypi",
+            "version": "==0.2.1"
         },
         "typing-extensions": {
             "hashes": [

@@ -1,0 +1,11 @@
+FROM scratch
+# Add the base image
+ARG FILE_ID
+ADD images/$FILE_ID.tar.gz /
+# Various config
+## Make SSH login faster
+RUN sed -i s'/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config \
+## Disable the setup screen
+  && touch /home/pi/.revpi-factory-reset
+# Start systemd
+ENTRYPOINT ["/usr/sbin/init"]

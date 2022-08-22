@@ -1,13 +1,13 @@
-all: clean images build
+all: build
 .PHONY: all
 
-images:
-	./images.py
-.PHONY: images
-
-build:
-	./build.py
+build: install
+	pipenv run ./build.py
 .PHONY: build
+
+push: install
+	pipenv run ./build.py --push
+.PHONY: push
 
 clean:
 	rm -rf images/*

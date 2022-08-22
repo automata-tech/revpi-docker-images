@@ -4,16 +4,18 @@ This repository contains Dockerfile for each Revolution Pi images ([here](https:
 
 ## Usage
 
-All the images are stored in `images` and can be built using `make build`.
-
-You can build individual images manually using:
+In order to run the images using systemd, you will need the following setup:
 ```bash
-docker build -t buster-05-2022 -f images/Dockerfile.buster-05-2022 .
+docker run --tmpfs /run --tmpfs /run/lock --tmpfs /tmp -v /sys/fs/cgroup:/sys/fs/cgroup -p 22:22 lbautomata/revpi:YOUR_TAG
 ```
 
-Those images are generated using `make images`.
+You should be able to SSH in the same way you do with any Raspberry Pi.
 
-Running `make clear` will put back the repository in a fresh state and running `make` will build everything correctly.
+## Building images
+
+All the images can be built using `make build` and pushed with `make push`.
+
+Running `make clear` will put back the repository in a fresh state.
 
 ## Adding new images
 
