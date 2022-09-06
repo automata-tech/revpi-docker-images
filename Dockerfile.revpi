@@ -6,6 +6,15 @@ ADD images/$FILE_ID.tar.gz /
 ## Make SSH login faster
 RUN sed -i s'/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config \
 ## Disable the setup screen
-  && touch /home/pi/.revpi-factory-reset
+  && touch /home/pi/.revpi-factory-reset \
+## Delete useless init.d services
+  && bash -c 'rm -f /etc/init.d/{apache2,bluetooth,console-setup.sh,cpufrequtils,cups,cups-browsed,fio,hwclock.sh,keyboard-setup.sh,lightdm,loadcpufreq,nfs-common,paxctld,plymouth,plymouth-log,raspi-config,resize2fs_once,revpipyload,rng-tools,rpcbind,saned,teamviewer-iot-mon-agent,teamviewer-revpi,triggerhappy,x11-common}' \
+## Delete systemd generators which creates useless services
+  && ((find /usr/lib/systemd/system-generators/ | grep -v systemd-sysv-generator | xargs rm -f '{}' \;) || true) \
+## Disable useless services
+  && (echo systemd-remount-fs systemd-modules-load \
+       autovt@ getty@ gldriver-test raspberrypi-net-mods rpi-display-backlight rpi-eeprom-update udisks2 wpa_supplicant \
+       apache2 bluetooth console-setup cups cups-browsed keyboard-setup triggerhappy \
+       | xargs -n 1 systemctl disable || true)
 # Start systemd
 ENTRYPOINT ["/usr/sbin/init"]
